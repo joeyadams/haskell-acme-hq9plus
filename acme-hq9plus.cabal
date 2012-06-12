@@ -9,6 +9,10 @@ category:           Acme
 build-type:         Simple
 cabal-version:      >=1.8
 
+source-repository head
+    type:       git
+    location:   git://github.com/joeyadams/haskell-acme-hq9plus.git
+
 library
     exposed-modules:
         Acme.HQ9Plus
@@ -16,3 +20,7 @@ library
     build-depends: base >= 4.5 && < 5
                     -- base 4.5 is needed because (HQ a) has a Num instance,
                     -- but no Eq or Show instances.
+
+    other-extensions:
+        FlexibleInstances
+        GADTs
