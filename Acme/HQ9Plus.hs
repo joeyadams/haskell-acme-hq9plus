@@ -4,7 +4,7 @@
 -- Module       : Acme.HQ9Plus
 -- License      : Public domain
 -- Maintainer   : joeyadams3.14159@gmail.com
--- Portability  : FlexibleInstances, GADTs
+-- Portability  : base >= 4.5, FlexibleInstances, GADTs
 --
 -- An embedded DSL for the HQ9+ programming language.  For more information, see
 -- <http://esolangs.org/wiki/HQ9>.
@@ -156,10 +156,10 @@ showSource xs =
         [x] -> ["main=runHQ " ++ x]
         _    | length xs < 4
             -> ["main=runHQ$" ++ intercalate ">>" xs]
-             | length (filter (== "plus") xs) < 25
+             | length (filter (== "plus") xs) < 27
             -> ["main=runHQ$do " ++ intercalate ";" xs]
              | otherwise
-            -> [ "import Prelude hiding(+)"
+            -> [ "import Prelude hiding((+))"
                , "main=runHQ$do " ++ intercalate ";" (map shortenPlus xs)
                ]
                where shortenPlus "plus" = "(+)"
